@@ -11,8 +11,8 @@ The following folders contain:
  * ptz_pyd2_box.pdb - a 5x5x5 nm^3 box of PYD molecules with a PTZ-DBTO2 at the centre
  
 ## sample_input_scripts
- * OpenMM_sampling_s0.py - a script for running s0 state sampling using OpenMM
- * OpenMM_sampling_s1.py - a script for running s1 state sampling using OpenMM
- * tda.inp - a Gaussian 09 input for calculating the lowest 20 singlet and triplet excitations of PTZ-DBTO2 (TDDFT+TDA + backgroud point charges)
+ * OpenMM_sampling_s0.py - a python script for running s0 state sampling using OpenMM
+ * OpenMM_sampling_s1.py - a python script for running s1 state sampling using OpenMM
+ * tda.inp - a Gaussian 09 input file for calculating the lowest 20 singlet and triplet excitations of PTZ-DBTO2 (TDDFT+TDA) with backgroud point charges
 
 
