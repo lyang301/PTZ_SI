@@ -1,4 +1,4 @@
-# supplementary information for "Modelling Molecular Emitters in Organic LightEmitting Diodes with the Quantum MechanicalBespoke Force Field"
+# Supplementary Information for "Modelling Molecular Emitters in Organic LightEmitting Diodes with the Quantum MechanicalBespoke Force Field"
 
 The following folders contain:
 
