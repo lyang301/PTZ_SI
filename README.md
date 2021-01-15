@@ -1,5 +1,7 @@
 # Supplementary Information for "Modelling Molecular Emitters in Organic LightEmitting Diodes with the Quantum MechanicalBespoke Force Field"
 
+QUBE FF are generated with QUBEKit, for details, see https://github.com/qubekit/QUBEKit.
+
 The following folders contain:
 
 ## FF_and_pdb
