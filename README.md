@@ -7,7 +7,7 @@ QUBE FF are generated with QUBEKit, exapmle configuration files are given in **Q
     # or for s1 state
     QUBEKit -i PTZ.pdb -config ptz-s1.ini
 
-For details, see https://github.com/qubekit/QUBEKit.
+For more details on QUBEKit and troubleshooting, see https://github.com/qubekit/QUBEKit.
 
 The following folders contain:
 
