@@ -1,6 +1,13 @@
 # Supplementary Information for "Modelling Molecular Emitters in Organic LightEmitting Diodes with the Quantum MechanicalBespoke Force Field"
 
-QUBE FF are generated with QUBEKit, for details, see https://github.com/qubekit/QUBEKit.
+QUBE FF are generated with QUBEKit, exapmle configuration files are given in **QUBEKit_configs**. To run QUBEKit in command line, simply type:
+   
+    # PTZ s0 state
+    QUBEKit -i PTZ.pdb -config ptz-s0.ini
+    # or for s1 state
+    QUBEKit -i PTZ.pdb -config ptz-s1.ini
+
+For details, see https://github.com/qubekit/QUBEKit.
 
 The following folders contain:
 
@@ -17,4 +24,6 @@ The following folders contain:
  * OpenMM_sampling_s1.py - a python script for running s1 state sampling using OpenMM
  * tda.inp - a Gaussian 09 input file for calculating the lowest 20 singlet and triplet excitations of PTZ-DBTO2 (TDDFT+TDA) with backgroud point charges
 
-
+## trajectory
+ * Raw trajectories of PTZ-DBTO2 S<sub>0</sub> and S<sub>1</sub> states samplings in different environments.
+ * Each *.dcd file corresponds to a 100 ns MD simulation, which contains 500 frames. 
