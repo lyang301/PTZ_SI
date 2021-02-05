@@ -26,5 +26,5 @@ The following folders contain:
 
 ## trajectory
  * Raw trajectories of PTZ-DBTO2 S<sub>0</sub> and S<sub>1</sub> states samplings in different environments.
- * To access the data, see https://doi.org/10.5281/zenodo.4507905.
+ * To access the data, see https://doi.org/10.5281/zenodo.4509425.
  * Each *.dcd file corresponds to a 100 ns MD simulation, which contains 500 frames. 
