@@ -1,0 +1,62 @@
+#!/bin/bash
+
+
+#SBATCH -J openmm
+#SBATCH -A payne-SL2-GPU
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:1
+#SBATCH --time=24:00:00
+#SBATCH --mail-type=FAIL
+#SBATCH --no-requeue
+#SBATCH -p pascal
+#! SBATCH --exclusive
+
+numnodes=$SLURM_JOB_NUM_NODES
+numtasks=$SLURM_NTASKS
+mpi_tasks_per_node=$(echo "$SLURM_TASKS_PER_NODE" | sed -e  's/^\([0-9][0-9]*\).*$/\1/')
+
+. /etc/profile.d/modules.sh
+module purge
+module load rhel7/default-gpu
+module load fftw-3.3.6-pl2-intel-17.0.4-gtkahx5
+module load cuda/9.0
+export PATH="/home/ly301/anaconda3/bin:$PATH"
+
+application="~/ONETEP_trial/bin/onetep.csd3-cpu"
+options="$rootname.dat > $rootname.onetep"
+
+workdir="$SLURM_SUBMIT_DIR"
+#! Are you using OpenMP (NB this is unrelated to OpenMPI)? If so increase this
+#! safe value to no more than 16:
+export OMP_NUM_THREADS=1
+export I_MPI_OFA_TRANSLATION_CACHE=0
+
+#! Number of MPI tasks to be started by the application per node and in total (do not change):
+np=$[${numnodes}*${mpi_tasks_per_node}]
+
+#! The following variables define a sensible pinning strategy for Intel MPI tasks -
+#! this should be suitable for both pure MPI and hybrid MPI/OpenMP jobs:
+export I_MPI_PIN_DOMAIN=omp:compact # Domains are $OMP_NUM_THREADS cores in size
+export I_MPI_PIN_ORDER=scatter # Adjacent domains have minimal sharing of caches/sockets
+
+#! Choose this for a MPI code (possibly using OpenMP) using Intel MPI.
+CMD="mpirun -ppn $mpi_tasks_per_node -np $np $application $options"
+
+cd $workdir
+echo -e "Changed directory to `pwd`.\n"
+
+ulimit -s unlimited
+
+#for j in {16..32..4}
+#do
+#export OPENMM_CPU_THREADS=$j
+#echo "OPENMM_CPU_THREADS:"
+#echo "$j"
+#python3 -m simtk.testInstallation
+#lspci
+#time python3 OpenMM.py > log_heat
+time python3 OpenMM.py > log
+#time python3 OpenMM_sampling.py > log_sampling
+echo "OPENMM_CPU_THREADS:"
+echo "$OPENMM_CPU_THREADS"
+#done
